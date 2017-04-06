@@ -4,6 +4,7 @@
 public class App {
 
   public static void main(String[] args) {
+    System.out.println();
     System.out.println("Java Todo application");
     System.out.println("=====================");
     System.out.println();
@@ -14,5 +15,6 @@ public class App {
     System.out.println(" -c  Completes a task");
     System.out.println();
     System.out.println("So, what do you want to do?");
+    System.out.println();
   }
 }
