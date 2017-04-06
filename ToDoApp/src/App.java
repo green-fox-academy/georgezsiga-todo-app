@@ -18,6 +18,7 @@ public class App {
     this.args = args;
   }
 
+
   public boolean contains(String argument) {
     if (args.length > 0) {
       for (String arg : args) {
@@ -93,7 +94,10 @@ public class App {
       todo.removeTask(number);
     } else if (handler.contains("c")) {
       int number = handler.taskNumberMethod("check");
-      todo.replaceTask(number);
+      todo.replaceTask(number, "[x]");
+    } else if (handler.contains("u")) {
+      int number = handler.taskNumberMethod("check");
+      todo.replaceTask(number, "[ ]");
     } else if (handler.args.length < 1) {
       handler.noArgument();
     } else {
