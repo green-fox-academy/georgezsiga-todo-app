@@ -1,4 +1,9 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by georgezsiga on 4/6/17.
@@ -80,34 +85,32 @@ public class App {
   }
 
   public void noArgument() {
-    System.out.println();
-    System.out.println("Java ToDo application");
-    System.out.println("=====================");
-    System.out.println();
-    System.out.println("Command line arguments:");
-    System.out.println(" -l  Lists all the tasks");
-    System.out.println(" -a  Adds a new task");
-    System.out.println(" -r  Removes a task");
-    System.out.println(" -c  Completes a task");
-    System.out.println();
-    System.out.println("So, what do you want to do?");
-    System.out.println();
+    try {
+      Path filePath = Paths.get("files/userManual.txt");
+      List<String> lines = Files.readAllLines(filePath);
+      for (int i = 0; i < lines.size(); i++) {
+        System.out.println(" " + (i+1) + " - " + lines.get(i));
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public static void main(String[] args) {
     App handler = new App(args);
     ToDoList list = new ToDoList();
+    ToDo todo = new ToDo();
     if (handler.contains("l")) {
       list.listTheTasks();
     } else if (handler.contains("a")){
       String taskName = handler.taskNameMethod();
-      list.addNewTask(taskName);
+      todo.addNewTask(taskName);
     } else if (handler.contains("r")) {
       int number = handler.taskNumberMethod();
-      list.removeTask(number);
+      todo.removeTask(number);
     } else if (handler.contains("c")) {
       int number = handler.taskNumberMethodCheck();
-      list.replaceTask(number);
+      todo.replaceTask(number);
     } else if (handler.args.length < 1){
       handler.noArgument();
     } else {
