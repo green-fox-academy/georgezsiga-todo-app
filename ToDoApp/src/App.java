@@ -14,12 +14,12 @@ public class App {
   private String taskName;
   private int taskNumber;
 
-  public App(String[] args) {
+  private App(String[] args) {
     this.args = args;
   }
 
 
-  public boolean contains(String argument) {
+  private boolean contains(String argument) {
     if (args.length > 0) {
       for (String arg : args) {
         if (arg.startsWith("-") && arg.contains(argument)) {
@@ -30,7 +30,7 @@ public class App {
     return false;
   }
 
-  public String taskNameMethod() {
+  private String taskNameMethod() {
     if (args.length == 1) {
       System.out.println("Unable to add, no task provided");
       System.exit(0);
@@ -40,7 +40,7 @@ public class App {
     return taskName;
   }
 
-  public int taskNumberMethod(String typeOfArgument) {
+  private int taskNumberMethod(String typeOfArgument) {
     ToDoList list = new ToDoList();
     ArrayList<String> list2 = list.readFromFile();
     try {
@@ -62,7 +62,7 @@ public class App {
     return taskNumber;
   }
 
-  public void noArgument() {
+  private void noArgument() {
     try {
       Path filePath = Paths.get("files/userManual.txt");
       List<String> lines = Files.readAllLines(filePath);
