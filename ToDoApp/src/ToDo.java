@@ -5,7 +5,7 @@ public class ToDo {
 
   private ToDoList list = new ToDoList();
 
-  private void addNewTask(String string) {
+  public void addNewTask(String string) {
     list.readFromFile();
     String string2 = "[ ] " + string;
     list.taskList.add(string2);
@@ -13,7 +13,7 @@ public class ToDo {
     list.printToFile();
   }
 
-  private void removeTask(int number) {
+  public void removeTask(int number) {
     list.readFromFile();
     int indexNumber = number - 1;
     list.taskList.remove(indexNumber);
@@ -22,7 +22,7 @@ public class ToDo {
     list.printToFile();
   }
 
-  private void replaceTask(int number, String check) {
+  public void replaceTask(int number, String check) {
     list.readFromFile();
     int indexNumber = number - 1;
     String string = list.taskList.get(indexNumber);
