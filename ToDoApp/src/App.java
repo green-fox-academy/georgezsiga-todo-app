@@ -16,9 +16,6 @@ public class App {
       for (String arg : args) {
         if (arg.startsWith("-") && arg.contains(argument)) {
           return true;
-        } else {
-          System.out.println("Unsupported argument");
-          System.exit(0);
         }
       }
     }
@@ -82,8 +79,10 @@ public class App {
     } else if (handler.contains("r")) {
       int number = handler.taskNumberMethod();
       list.removeTask(number);
-    } else {
+    } else if (handler.args.length < 1){
       handler.noArgument();
+    } else {
+      System.out.println("Unsupported argument");
     }
   }
 }
