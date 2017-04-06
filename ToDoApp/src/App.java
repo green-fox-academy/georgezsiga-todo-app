@@ -12,9 +12,11 @@ public class App {
 
   public void listTheTasks() {
     try {
-      Path filePath = Paths.get("data.txt");
+      Path filePath = Paths.get("./files/data.txt");
       List<String> lines = Files.readAllLines(filePath);
-      System.out.println(lines);
+      for (int i = 0; i < lines.size(); i++) {
+        System.out.println(" " + i + " " + lines.get(i));
+      }
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -36,7 +38,7 @@ public class App {
     System.out.println();
     Scanner scanner = new Scanner(System.in);
     String userInput = scanner.nextLine();
-    if (userInput == "-l") {
+    if (userInput.equals("-l")) {
       app.listTheTasks();
     }
   }
