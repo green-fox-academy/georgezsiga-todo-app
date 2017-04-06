@@ -52,12 +52,12 @@ public class ArgumentHandler {
     }
 
   public void addNewTask() {
+    ToDoList list = new ToDoList();
     String taskName = args[1].toString();
-    List<String> taskList = new ArrayList();
-    taskList.add(taskName);
+    list.taskList.add(taskName);
     try{
       Path filePath = Paths.get("files/data.txt");
-      Files.write(filePath, taskList);
+      Files.write(filePath, list.taskList);
     } catch (IOException e) {
       e.printStackTrace();
       System.out.println("Uh-oh, could not write the file!");
