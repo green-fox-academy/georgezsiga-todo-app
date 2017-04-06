@@ -22,15 +22,15 @@ public class ToDo {
     list.printToFile();
   }
 
-  public void replaceTask(int number) {
+  public void replaceTask(int number, String check) {
     list.readFromFile();
     int indexNumber = number - 1;
     String string = list.taskList.get(indexNumber);
     String string2 = string.substring(3);
-    string = "[x]" + string2;
+    string = check + string2;
     list.taskList.set(indexNumber, string);
     System.out.println(
-        "The task at this position: '" + number + "' has been checked as done in your task list");
+        "The task at this position: '" + number + "' has been checked in your task list");
     list.printToFile();
   }
 
