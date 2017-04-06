@@ -43,7 +43,7 @@ public class ArgumentHandler {
           System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
         } else {
           for (int i = 0; i < lines.size(); i++) {
-            System.out.println(" " + i + " " + lines.get(i));
+            System.out.println(" " + i + 1 + " " + lines.get(i));
           }
         }
       } catch (IOException e) {
