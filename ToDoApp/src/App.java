@@ -78,7 +78,13 @@ public class App {
     ToDoList list = new ToDoList();
     ToDo todo = new ToDo();
     if (handler.contains("l")) {
-      list.listTheTasks();
+      if (handler.contains("lu")) {
+        list.unDoneTasks();
+      } else if (handler.contains("lf")) {
+        list.doneTasks();
+      } else {
+        list.listTheTasks();
+      }
     } else if (handler.contains("a")) {
       String taskName = handler.taskNameMethod();
       todo.addNewTask(taskName);
