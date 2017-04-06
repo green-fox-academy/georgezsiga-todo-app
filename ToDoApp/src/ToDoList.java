@@ -10,10 +10,39 @@ import java.util.List;
  * Created by georgezsiga on 4/6/17.
  */
 public class ToDoList {
-  ArrayList<String> taskList;
+  private ArrayList<String> taskList;
 
   public ToDoList() {
     this.taskList = new ArrayList<>();
+  }
+
+  public ArrayList<String> getTaskList() {
+    return taskList;
+  }
+
+  public ArrayList<String> addNewTask(String string) {
+    taskList.add(taskList.size(), string);
+    System.out.println("Your task: '" + string + "' has been added to your task list");
+    System.out.println(taskList);
+    return taskList;
+  }
+
+  public ArrayList<String> removeTask(int number) {
+    taskList.remove(number);
+    System.out.println("The task at this position: '" + number + "' has been added to your task list");
+    System.out.println(taskList);
+    return taskList;
+  }
+
+  public void printToFile() {
+    try{
+      Path filePath = Paths.get("files/data.txt");
+      Files.write(filePath, getTaskList());
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.out.println("Uh-oh, could not write the file!");
+    }
+//    System.out.println("Your task: '" + string + "' has been added to your task list");
   }
 
   public void listTheTasks() {
@@ -24,7 +53,7 @@ public class ToDoList {
         System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
       } else {
         for (int i = 0; i < lines.size(); i++) {
-          System.out.println(" " + i + 1 + " " + lines.get(i));
+          System.out.println(" " + i + " " + lines.get(i));
         }
       }
     } catch (IOException e) {
