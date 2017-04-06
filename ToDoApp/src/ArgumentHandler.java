@@ -17,6 +17,11 @@ public class ArgumentHandler {
     this.args = args;
   }
 
+  public String taskNameMethod() {
+    String taskName = args[1].toString();
+    return taskName;
+  }
+
   public String getDirectory() {
     if (args.length > 0 && !args[0].startsWith("-")) {
       return args[0];
@@ -35,35 +40,35 @@ public class ArgumentHandler {
     return false;
   }
 
-  public void listTheTasks() {
-      try {
-        Path filePath = Paths.get("files/data.txt");
-        List<String> lines = Files.readAllLines(filePath);
-        if (lines.size() == 0) {
-          System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
-        } else {
-          for (int i = 0; i < lines.size(); i++) {
-            System.out.println(" " + i + 1 + " " + lines.get(i));
-          }
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    }
+//  public void listTheTasks() {
+//      try {
+//        Path filePath = Paths.get("files/data.txt");
+//        List<String> lines = Files.readAllLines(filePath);
+//        if (lines.size() == 0) {
+//          System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
+//        } else {
+//          for (int i = 0; i < lines.size(); i++) {
+//            System.out.println(" " + i + 1 + " " + lines.get(i));
+//          }
+//        }
+//      } catch (IOException e) {
+//        e.printStackTrace();
+//      }
+//    }
 
-  public void addNewTask() {
-    ToDoList list = new ToDoList();
-    String taskName = args[1].toString();
-    list.taskList.add(taskName);
-    try{
-      Path filePath = Paths.get("files/data.txt");
-      Files.write(filePath, list.taskList);
-    } catch (IOException e) {
-      e.printStackTrace();
-      System.out.println("Uh-oh, could not write the file!");
-    }
-    System.out.println("Your task: '" + taskName + "' has been added to your task list");
-  }
+//  public void addNewTask() {
+//    ToDoList list = new ToDoList();
+//    String taskName = args[1].toString();
+//    list.taskList.add(taskName);
+//    try{
+//      Path filePath = Paths.get("files/data.txt");
+//      Files.write(filePath, list.taskList);
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//      System.out.println("Uh-oh, could not write the file!");
+//    }
+//    System.out.println("Your task: '" + taskName + "' has been added to your task list");
+//  }
 
   public void noArgument() {
     System.out.println();
