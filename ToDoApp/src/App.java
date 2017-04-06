@@ -89,7 +89,7 @@ public class App {
       Path filePath = Paths.get("files/userManual.txt");
       List<String> lines = Files.readAllLines(filePath);
       for (int i = 0; i < lines.size(); i++) {
-        System.out.println(" " + (i+1) + " - " + lines.get(i));
+        System.out.println(lines.get(i));
       }
     } catch (IOException e) {
       e.printStackTrace();
