@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ToDoList {
 
-  private ArrayList<String> taskList;
+  public ArrayList<String> taskList;
 
   public ToDoList() {
     this.taskList = new ArrayList<>();
@@ -19,14 +19,6 @@ public class ToDoList {
 
   public ArrayList<String> getTaskList() {
     return taskList;
-  }
-
-  public void addNewTask(String string) {
-    readFromFile();
-    String string2 = " " + string;
-    taskList.add(string2);
-    System.out.println("Your task: '" + string + "' has been added to your task list");
-    printToFile();
   }
 
   public ArrayList<String> readFromFile() {
@@ -40,30 +32,6 @@ public class ToDoList {
       e.printStackTrace();
     }
     return taskList;
-  }
-
-  public int removeTask(int number) {
-    readFromFile();
-    int indexNumber = number -1;
-    taskList.remove(indexNumber);
-    System.out.println(
-        "The task at this position: '" + number + "' has been removed from your task list");
-    printToFile();
-    return indexNumber;
-  }
-
-  public int replaceTask(int number) {
-    readFromFile();
-    int indexNumber = number -1;
-    String string = taskList.get(indexNumber);
-    String check = string.substring(0,1);
-    String string2 = string.substring(1);
-    string = "x" + string2;
-    taskList.set(indexNumber, string);
-    System.out.println(
-        "The task at this position: '" + number + "' has been checked as done in your task list");
-    printToFile();
-    return indexNumber;
   }
 
   public void printToFile() {
@@ -95,5 +63,4 @@ public class ToDoList {
       e.printStackTrace();
     }
   }
-
 }
