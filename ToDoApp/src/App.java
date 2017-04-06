@@ -27,7 +27,12 @@ public class App {
   }
 
   public String taskNameMethod() {
-    this.taskName = args[1];
+    if (args.length == 1) {
+      System.out.println("Unable to add, no task provided");
+      System.exit(0);
+    } else {
+      this.taskName = args[1];
+    }
     return taskName;
   }
 
@@ -54,15 +59,8 @@ public class App {
       list.listTheTasks();
     } else if (handler.contains("a")){
       String taskName = handler.taskNameMethod();
-      list.taskList.add(taskName);
-      try{
-        Path filePath = Paths.get("files/data.txt");
-        Files.write(filePath, list.taskList);
-      } catch (IOException e) {
-        e.printStackTrace();
-        System.out.println("Uh-oh, could not write the file!");
-      }
-      System.out.println("Your task: '" + taskName + "' has been added to your task list");
+      list.addNewTask(taskName);
+//      list.printToFile();
     } else {
       handler.noArgument();
     }
