@@ -11,7 +11,6 @@ public class App {
   String[] args;
   String taskName;
   int taskNumber;
-  boolean isInteger;
 
   public App(String[] args) {
     this.args = args;
@@ -37,10 +36,6 @@ public class App {
     }
     return taskName;
   }
-  public boolean isInteger() {
-    Integer.parseInt(args[1]);
-    return true;
-  }
 
   public int taskNumberMethod() {
     try {
@@ -57,6 +52,7 @@ public class App {
       }
     } catch (NumberFormatException e) {
       System.out.println("Unable to remove: index is not a number");
+      System.exit(0);
     }
     return taskNumber;
   }
@@ -87,8 +83,7 @@ public class App {
       list.addNewTask(taskName);
     } else if (handler.contains("r")) {
       int number = handler.taskNumberMethod();
-
-//      list.removeTask(number);
+      list.removeTask(number);
     } else {
       handler.noArgument();
     }
