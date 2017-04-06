@@ -1,7 +1,6 @@
 [x] walk the dog
 [ ] run
-[x] not run
-[ ] baby
 [x] eat
-[ ] walk the dog
-[x] run
+[ ] buy milk
+[ ] study
+[ ] read a book
