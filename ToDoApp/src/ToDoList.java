@@ -23,7 +23,8 @@ public class ToDoList {
 
   public void addNewTask(String string) {
     readFromFile();
-    taskList.add(string);
+    String newString = " " + string;
+    taskList.add(newString);
     System.out.println("Your task: '" + string + "' has been added to your task list");
     System.out.println(taskList);
     printToFile();
@@ -71,7 +72,9 @@ public class ToDoList {
         System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
       } else {
         for (int i = 0; i < lines.size(); i++) {
-            System.out.println(" " + (i+1) + " " + lines.get(i));
+          String check = lines.get(i).substring(0,1);
+          String string = lines.get(i).substring(1);
+            System.out.println(" " + (i+1) + " -[" + check + "] " + string);
         }
       }
     } catch (IOException e) {
