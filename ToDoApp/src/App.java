@@ -10,20 +10,7 @@ import java.util.Scanner;
  */
 public class App {
 
-  public void listTheTasks() {
-    try {
-      Path filePath = Paths.get("./files/data.txt");
-      List<String> lines = Files.readAllLines(filePath);
-      for (int i = 0; i < lines.size(); i++) {
-        System.out.println(" " + i + " " + lines.get(i));
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public static void main(String[] args) {
-    App app = new App();
+  public void noArgument() {
     System.out.println();
     System.out.println("Java ToDo application");
     System.out.println("=====================");
@@ -36,10 +23,16 @@ public class App {
     System.out.println();
     System.out.println("So, what do you want to do?");
     System.out.println();
-    Scanner scanner = new Scanner(System.in);
-    String userInput = scanner.nextLine();
-    if (userInput.equals("-l")) {
-      app.listTheTasks();
+  }
+
+  public static void main(String[] args) {
+    ArgumentHandler handler = new ArgumentHandler(args);
+    App app = new App();
+
+    if (handler.contains("l")) {
+      handler.listTheTasks();
+    } else {
+      app.noArgument();
     }
   }
 }
