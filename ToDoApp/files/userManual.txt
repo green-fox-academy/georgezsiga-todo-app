@@ -5,10 +5,10 @@ George`s Java ToDo application
 Command line arguments:
  -l  Lists all the tasks
  -a  Adds a new task
-      // -a "New task" // - don`t forget the ""
+      -a "New task"     - don`t forget the ""
  -r  Removes a task
-      // -r 3 //  - removes the third task on the list
+      -r 3              - removes the third task on the list
  -c  Completes a task
-      // -c 3 //  - completes the third task on the list
+      -c 3              - completes the third task on the list
 
 So, what do you want to do?
