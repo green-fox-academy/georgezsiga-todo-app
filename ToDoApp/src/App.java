@@ -9,11 +9,10 @@ import java.util.List;
  * Created by georgezsiga on 4/6/17.
  */
 public class App {
-  String[] args;
-  String taskName;
-  int taskNumber;
-  String remove = "remove";
-  String check = "check";
+
+  private String[] args;
+  private String taskName;
+  private int taskNumber;
 
   public App(String[] args) {
     this.args = args;
@@ -40,45 +39,23 @@ public class App {
     return taskName;
   }
 
-  public int taskNumberMethod() {
+  public int taskNumberMethod(String typeOfArgument) {
     ToDoList list = new ToDoList();
     ArrayList<String> list2 = list.readFromFile();
     try {
       if (args.length == 1) {
-        System.out.println("Unable to remove, no index provided");
+        System.out.println("Unable to " + typeOfArgument + ", no index provided");
         System.exit(0);
       } else if (Integer.parseInt(args[1]) < -1) {
-
+        System.out.println();
       } else if (list2.size() < Integer.parseInt(args[1])) {
-        System.out.println("Unable to remove: index is out of bound");
+        System.out.println("Unable to " + typeOfArgument + ": index is out of bound");
         System.exit(0);
       } else {
         taskNumber = Integer.parseInt(args[1]);
       }
     } catch (NumberFormatException e) {
-      System.out.println("Unable to remove: index is not a number");
-      System.exit(0);
-    }
-    return taskNumber;
-  }
-
-  public int taskNumberMethodCheck() {
-    ToDoList list = new ToDoList();
-    ArrayList<String> list2 = list.readFromFile();
-    try {
-      if (args.length == 1) {
-        System.out.println("Unable to check, no index provided");
-        System.exit(0);
-      } else if (Integer.parseInt(args[1]) < -1) {
-
-      } else if (list2.size() < Integer.parseInt(args[1])) {
-        System.out.println("Unable to check: index is out of bound");
-        System.exit(0);
-      } else {
-        taskNumber = Integer.parseInt(args[1]);
-      }
-    } catch (NumberFormatException e) {
-      System.out.println("Unable to check: index is not a number");
+      System.out.println("Unable to " + typeOfArgument + ": index is not a number");
       System.exit(0);
     }
     return taskNumber;
@@ -102,16 +79,16 @@ public class App {
     ToDo todo = new ToDo();
     if (handler.contains("l")) {
       list.listTheTasks();
-    } else if (handler.contains("a")){
+    } else if (handler.contains("a")) {
       String taskName = handler.taskNameMethod();
       todo.addNewTask(taskName);
     } else if (handler.contains("r")) {
-      int number = handler.taskNumberMethod();
+      int number = handler.taskNumberMethod("remove");
       todo.removeTask(number);
     } else if (handler.contains("c")) {
-      int number = handler.taskNumberMethodCheck();
+      int number = handler.taskNumberMethod("check");
       todo.replaceTask(number);
-    } else if (handler.args.length < 1){
+    } else if (handler.args.length < 1) {
       handler.noArgument();
     } else {
       System.out.println("Unsupported argument");
