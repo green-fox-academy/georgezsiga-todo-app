@@ -39,7 +39,10 @@ public class App {
 
   public int taskNumberMethod() {
     if (args.length == 1) {
-      System.out.println("Unable to remove, no task provided");
+      System.out.println("Unable to remove, no index provided");
+      System.exit(0);
+    } else if (args.length < Integer.parseInt(args[1])) {
+      System.out.println("Unable to remove: index is out of bound");
       System.exit(0);
     } else {
        taskNumber = Integer.parseInt(args[1]);
