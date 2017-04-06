@@ -1,8 +1,3 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 
 /**
  * Created by georgezsiga on 4/6/17.
@@ -21,6 +16,9 @@ public class App {
       for (String arg : args) {
         if (arg.startsWith("-") && arg.contains(argument)) {
           return true;
+        } else {
+          System.out.println("Unsupported argument");
+          System.exit(0);
         }
       }
     }
