@@ -1,8 +1,8 @@
-xwalk the dog
-xrun
-xnot run
-xbaby
-xeat
- walk the dog
-xrun
- kkdkddk
+[x] walk the dog
+[ ] run
+[x] not run
+[ ] baby
+[x] eat
+[ ] walk the dog
+[x] run
+
