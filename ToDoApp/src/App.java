@@ -83,6 +83,7 @@ public class App {
       handler.noArgument();
     } else {
       System.out.println("Unsupported argument");
+      handler.noArgument();
     }
   }
 }
