@@ -11,6 +11,7 @@ public class App {
   String[] args;
   String taskName;
   int taskNumber;
+  boolean isInteger;
 
   public App(String[] args) {
     this.args = args;
@@ -36,16 +37,26 @@ public class App {
     }
     return taskName;
   }
+  public boolean isInteger() {
+    Integer.parseInt(args[1]);
+    return true;
+  }
 
   public int taskNumberMethod() {
-    if (args.length == 1) {
-      System.out.println("Unable to remove, no index provided");
-      System.exit(0);
-    } else if (args.length < Integer.parseInt(args[1])) {
-      System.out.println("Unable to remove: index is out of bound");
-      System.exit(0);
-    } else {
-       taskNumber = Integer.parseInt(args[1]);
+    try {
+      if (args.length == 1) {
+        System.out.println("Unable to remove, no index provided");
+        System.exit(0);
+      } else if (Integer.parseInt(args[1]) < -1) {
+
+      } else if (args.length < Integer.parseInt(args[1])) {
+        System.out.println("Unable to remove: index is out of bound");
+        System.exit(0);
+      } else {
+        taskNumber = Integer.parseInt(args[1]);
+      }
+    } catch (NumberFormatException e) {
+      System.out.println("Unable to remove: index is not a number");
     }
     return taskNumber;
   }
@@ -76,7 +87,8 @@ public class App {
       list.addNewTask(taskName);
     } else if (handler.contains("r")) {
       int number = handler.taskNumberMethod();
-      list.removeTask(number);
+
+//      list.removeTask(number);
     } else {
       handler.noArgument();
     }
