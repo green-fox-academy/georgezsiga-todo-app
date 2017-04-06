@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class App {
   String[] args;
   String taskName;
-  String taskNumber;
+  int taskNumber;
 
   public App(String[] args) {
     this.args = args;
@@ -37,12 +37,12 @@ public class App {
     return taskName;
   }
 
-  public String taskNumberMethod() {
+  public int taskNumberMethod() {
     if (args.length == 1) {
-      System.out.println("Unable to add, no task provided");
+      System.out.println("Unable to remove, no task provided");
       System.exit(0);
     } else {
-       taskNumber = args[1];
+       taskNumber = Integer.parseInt(args[1]);
     }
     return taskNumber;
   }
@@ -71,11 +71,9 @@ public class App {
     } else if (handler.contains("a")){
       String taskName = handler.taskNameMethod();
       list.addNewTask(taskName);
-//      list.printToFile();
     } else if (handler.contains("r")) {
-      String number = handler.taskNumberMethod();
-      int number2 = number.charAt(0);
-      list.removeTask(number2);
+      int number = handler.taskNumberMethod();
+      list.removeTask(number);
     } else {
       handler.noArgument();
     }
