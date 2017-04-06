@@ -23,10 +23,9 @@ public class ToDoList {
 
   public void addNewTask(String string) {
     readFromFile();
-    String newString = " " + string;
-    taskList.add(newString);
+    String string2 = " " + string;
+    taskList.add(string2);
     System.out.println("Your task: '" + string + "' has been added to your task list");
-    System.out.println(taskList);
     printToFile();
   }
 
@@ -53,6 +52,20 @@ public class ToDoList {
     return indexNumber;
   }
 
+  public int replaceTask(int number) {
+    readFromFile();
+    int indexNumber = number -1;
+    String string = taskList.get(indexNumber);
+    String check = string.substring(0,1);
+    String string2 = string.substring(1);
+    string = "x" + string2;
+    taskList.set(indexNumber, string);
+    System.out.println(
+        "The task at this position: '" + number + "' has been checked as done in your task list");
+    printToFile();
+    return indexNumber;
+  }
+
   public void printToFile() {
     try {
       Path filePath = Paths.get("files/data.txt");
@@ -72,9 +85,10 @@ public class ToDoList {
         System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
       } else {
         for (int i = 0; i < lines.size(); i++) {
-          String check = lines.get(i).substring(0,1);
-          String string = lines.get(i).substring(1);
-            System.out.println(" " + (i+1) + " -[" + check + "] " + string);
+          String string = lines.get(i);
+          String check = string.substring(0,1);
+          String string2 = string.substring(1);
+            System.out.println(" " + (i+1) + " -[" + check + "] " + string2);
         }
       }
     } catch (IOException e) {
