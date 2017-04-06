@@ -5,10 +5,11 @@ public class App {
 
   public static void main(String[] args) {
     ArgumentHandler handler = new ArgumentHandler(args);
-    App app = new App();
 
     if (handler.contains("l")) {
       handler.listTheTasks();
+    } else if (handler.contains("a")){
+      handler.addNewTask();
     } else {
       handler.noArgument();
     }
