@@ -80,11 +80,11 @@ public class App {
     ToDo todo = new ToDo();
     if (handler.contains("l")) {
       if (handler.contains("lu")) {
-        list.unDoneTasks();
+        list.doneTasks("[ ]");
       } else if (handler.contains("lf")) {
-        list.doneTasks();
+        list.doneTasks("[x]");
       } else {
-        list.listTheTasks();
+        list.doneTasks(" ");
       }
     } else if (handler.contains("a")) {
       String taskName = handler.taskNameMethod();
