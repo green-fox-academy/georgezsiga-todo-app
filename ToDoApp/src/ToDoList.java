@@ -45,23 +45,7 @@ public class ToDoList {
     System.out.println("Your tasklist has been refreshed");
   }
 
-  public void listTheTasks() {
-    try {
-      Path filePath = Paths.get("files/data.txt");
-      List<String> lines = Files.readAllLines(filePath);
-      if (lines.size() == 0) {
-        System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
-      } else {
-        for (int i = 0; i < lines.size(); i++) {
-            System.out.println(" " + (i+1) + " - " + lines.get(i));
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public void unDoneTasks() {
+  public void doneTasks(String check) {
     try {
       Path filePath = Paths.get("files/data.txt");
       List<String> lines = Files.readAllLines(filePath);
@@ -69,34 +53,27 @@ public class ToDoList {
       if (lines.size() == 0) {
         System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
       } else {
-        System.out.println("Your unfinished tasks:");
-        System.out.println();
-        for (int i = 0; i < lines.size(); i++) {
-          if (lines.get(i).startsWith("[ ]")) {
-            System.out.println(" " + counter + " - " + lines.get(i));
-            counter += 1;
+        if (check == "[x]") {
+          System.out.println("The tasks you already finished with:");
+          System.out.println();
+          for (int i = 0; i < lines.size(); i++) {
+            if (lines.get(i).startsWith("[x]")) {
+              System.out.println(" " + counter + " - " + lines.get(i));
+              counter += 1;
+            }
           }
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public void doneTasks() {
-    try {
-      Path filePath = Paths.get("files/data.txt");
-      List<String> lines = Files.readAllLines(filePath);
-      int counter = 1;
-      if (lines.size() == 0) {
-        System.out.println("Good job, no ToDo`s for today! Go and have some fun!");
-      } else {
-        System.out.println("The tasks you already finished with:");
-        System.out.println();
-        for (int i = 0; i < lines.size(); i++) {
-          if (lines.get(i).startsWith("[x]")) {
-            System.out.println(" " + counter + " - " + lines.get(i));
-            counter += 1;
+        } else if (check == "[ ]") {
+          System.out.println("Your unfinished tasks:");
+          System.out.println();
+          for (int i = 0; i < lines.size(); i++) {
+            if (lines.get(i).startsWith("[ ]")) {
+              System.out.println(" " + counter + " - " + lines.get(i));
+              counter += 1;
+            }
+          }
+        } else {
+          for (int i = 0; i < lines.size(); i++) {
+            System.out.println(" " + (i+1) + " - " + lines.get(i));
           }
         }
       }
