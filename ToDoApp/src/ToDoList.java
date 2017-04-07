@@ -32,15 +32,9 @@ public class ToDoList {
   }
 
   public ArrayList<String> readFromFile() {
-    try {
-      Path filePath = Paths.get("files/" + "data" + ".txt");
-      List<String> lines = Files.readAllLines(filePath);
-      for (int i = 0; i < lines.size(); i++) {
-        taskList.add(i, lines.get(i));
+      for (int i = 0; i < readFile().size(); i++) {
+        taskList.add(i, readFile().get(i));
       }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
     return taskList;
   }
 
@@ -55,12 +49,22 @@ public class ToDoList {
     System.out.println("Your tasklist has been refreshed");
   }
 
-  public void listTasks(String check) {
+  public List<String> readFile() {
+    List<String> lines = new ArrayList<>();
     try {
       Path filePath = Paths.get("files/data.txt");
-      List<String> lines = Files.readAllLines(filePath);
+      lines = Files.readAllLines(filePath);
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.out.println("Uh-oh, could not read the file!");
+      System.exit(0);
+    }
+    return lines;
+  }
+
+  public void listTasks(String check) {
       int counter = 1;
-      if (lines.size() == 0) {
+      if (readFile().size() == 0) {
           System.out.println();
         System.out.println(ANSI_CYAN + "Good job, no ToDo`s for today! Go and have some fun!" + ANSI_RESET);
           System.out.println();
@@ -69,9 +73,9 @@ public class ToDoList {
           System.out.println();
           System.out.println(ANSI_CYAN + "The tasks you already finished with:" + ANSI_RESET);
           System.out.println();
-          for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).startsWith("[x]")) {
-              System.out.println(ANSI_CYAN + " " + counter + " - " + ANSI_RESET + ANSI_GREEN + lines.get(i) + ANSI_RESET);
+          for (int i = 0; i < readFile().size(); i++) {
+            if (readFile().get(i).startsWith("[x]")) {
+              System.out.println(ANSI_CYAN + " " + counter + " - " + ANSI_RESET + ANSI_GREEN + readFile().get(i) + ANSI_RESET);
               counter += 1;
             }
           }
@@ -79,9 +83,9 @@ public class ToDoList {
           System.out.println();
           System.out.println(ANSI_CYAN + "Your unfinished tasks:" + ANSI_RESET);
           System.out.println();
-          for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).startsWith("[ ]")) {
-              System.out.println(ANSI_CYAN + " " + counter + " - " + ANSI_RESET + ANSI_BLUE + lines.get(i) + ANSI_RESET);
+          for (int i = 0; i < readFile().size(); i++) {
+            if (readFile().get(i).startsWith("[ ]")) {
+              System.out.println(ANSI_CYAN + " " + counter + " - " + ANSI_RESET + ANSI_BLUE + readFile().get(i) + ANSI_RESET);
               counter += 1;
             }
           }
@@ -89,18 +93,15 @@ public class ToDoList {
           System.out.println();
           System.out.println(ANSI_CYAN + "Your actual tasklist:" + ANSI_RESET);
           System.out.println();
-          for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).startsWith("[x]")) {
-              System.out.println(ANSI_CYAN + " " + (i+1) + " - " + ANSI_RESET + ANSI_GREEN + lines.get(i) + ANSI_RESET);
+          for (int i = 0; i < readFile().size(); i++) {
+            if (readFile().get(i).startsWith("[x]")) {
+              System.out.println(ANSI_CYAN + " " + (i+1) + " - " + ANSI_RESET + ANSI_GREEN + readFile().get(i) + ANSI_RESET);
             } else {
-              System.out.println(ANSI_CYAN + " " + (i + 1) + " - " + ANSI_RESET + ANSI_BLUE + lines.get(i) + ANSI_RESET);
+              System.out.println(ANSI_CYAN + " " + (i + 1) + " - " + ANSI_RESET + ANSI_BLUE + readFile().get(i) + ANSI_RESET);
             }
           }
         }
           System.out.println();
       }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 }
