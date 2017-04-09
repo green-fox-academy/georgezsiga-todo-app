@@ -1,6 +1,4 @@
-# georgezsiga-todo-app
-
-George`s Java ToDo application
+# George`s Java ToDo application
 ==============================
 
 Command line arguments:
